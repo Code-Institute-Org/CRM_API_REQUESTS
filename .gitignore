@@ -2,3 +2,5 @@ tutor_ids.py
 ids.py
 emails.py
 __pycache__
+student_ids_by_barometer.json
+students_ids_by_barometer.json
