@@ -27,7 +27,7 @@ def get_access_token():
 
 def get_student(token, id):
     student_resp = requests.get(
-        STUDENTS_ENDPOINT + "/" + id,
+        f'{STUDENTS_ENDPOINT}/{id}',
         params={"per_page": 1},
         headers=auth_headers(token))
     if student_resp.status_code != 200:
@@ -41,7 +41,7 @@ def get_student(token, id):
 
 
 def create_an_activity(token, student_data, tutor, subject, start_date):
-    
+
     fields = {
         "Subject": subject,
         "Progression_Status": student_data['Progression_Status'],
@@ -61,9 +61,4 @@ def create_an_activity(token, student_data, tutor, subject, start_date):
 if __name__ == "__main__":
     token = get_access_token()
     for id in ids:
-        create_an_activity(token, get_student(token, id), 'Michael', 'Slack Reengagement', "2019-05-10")
-
-
-    
-            
-            
+        create_an_activity(token, get_student(token, id), 'TUTORNAME', 'Slack Reengagement', "2019-05-10")

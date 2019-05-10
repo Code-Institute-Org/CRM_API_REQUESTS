@@ -43,7 +43,7 @@ def update_field(token, student_ids, field_to_be_updated, new_value):
     update_resp = requests.put(
         STUDENTS_ENDPOINT,
         json={
-            "data": [{"id": student_id, field_to_be_updated: new_value} 
+            "data": [{"id": student_id, field_to_be_updated: new_value}
                      for student_id in student_ids]
         },
         headers=auth_headers(token))
@@ -77,7 +77,7 @@ def get_student_id(token, student_email):
     return student['id']
 
 def create_an_activity(token, student_data, tutor):
-    
+
     fields = {
         "Subject": "Tutor reengagement email",
         "Progression_Status": student_data['Progression_Status'],
@@ -94,7 +94,7 @@ def create_an_activity(token, student_data, tutor):
     print(activity_resp)
 
 def get_activities(token, criteria):
-    
+
     page=0
     records=[]
     while True:
@@ -107,7 +107,7 @@ def get_activities(token, criteria):
             },
             headers=auth_headers(token)
         )
-            
+
         records += activities_resp.json()
         if not activities_resp.json()['info']['more_records']:
             break
@@ -137,14 +137,14 @@ if __name__ == "__main__":
         "2019-05-01": MAY_ONE,
         "2019-05-02": MAY_TWO,
         "2019-05-03": MAY_THREE,
-        "2019-05-07": MAY_SEVEN, 
-        "2019-05-08": MAY_EIGHT, 
-        "2019-05-09": MAY_NINE, 
-        "2019-05-10": MAY_TEN, 
-        "2019-05-13": MAY_THIRTEEN, 
-        "2019-05-14": MAY_FOURTEEN, 
-        "2019-05-15": MAY_FIFTEEN, 
-        "2019-05-16": MAY_SIXTEEN, 
+        "2019-05-07": MAY_SEVEN,
+        "2019-05-08": MAY_EIGHT,
+        "2019-05-09": MAY_NINE,
+        "2019-05-10": MAY_TEN,
+        "2019-05-13": MAY_THIRTEEN,
+        "2019-05-14": MAY_FOURTEEN,
+        "2019-05-15": MAY_FIFTEEN,
+        "2019-05-16": MAY_SIXTEEN,
         "2019-05-17": MAY_SEVENTEEN
         }
     for date in ACTIVITIES_TO_UPDATE:
@@ -157,5 +157,3 @@ if __name__ == "__main__":
                 with open('problem.txt','a') as f:
                     f.write(id + '\n')
                     f.close()
-            
-            
